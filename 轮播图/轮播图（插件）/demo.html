@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>轮播图组件</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .leftBtn {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            left: 10px;
+            top: 50%;
+            margin-top: -15px;
+            background-color: #f40;
+        }
+        .rightBtn {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            top: 50%;
+            right: 10px;
+            margin-top: -15px;
+            background-color: #f40;
+        }
+        img {
+            width: 900px;
+            height: 540px;
+        }
+        .circle {
+            position: absolute;
+            bottom: 10px;
+            left: 100px;
+        }
+        .circle li {
+            float: left;
+            width: 20px;
+            height: 20px;
+            background-color: #000;
+            margin-right: 10px;
+        }
+        .circle li.cur{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="lunbo"></div>
+    <script src="./jquery.js"></script>
+    <script src="./carousel.js"></script>
+    <script> 
+        new carousel({
+            "id" : "lunbo",
+            "images" : ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg',],
+            "width" : 900,
+            "height" : 540,
+            "animateDuration" : 500,
+            "interval":1000
+        });
+    </script>
+</body>
+</html>
