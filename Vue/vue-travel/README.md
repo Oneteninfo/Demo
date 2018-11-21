@@ -1,6 +1,6 @@
 # vue-travel
 
-> A Vue.js project
+> 去哪儿网Vue项目练习
 
 ## Build Setup
 
