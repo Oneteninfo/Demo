@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+
+</head>
+<body>
+    <div id="app" class="container">
+      <table class="table">
+         <thead>
+             <tr>
+                 <th>编号</th>
+                 <th>名称</th>
+                 <th>单价（￥/kg）</th>
+                 <th>数量</th>
+                 <th>单个商品总价</th>
+             </tr>
+         </thead>
+         <tbody>
+             <tr v-for="(item, index) in goods">
+                <td>{{index+1}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.price}}</td>
+                <td>
+                    <button class="btn" @click="item.num++">+</button>
+                    <span class="badge">{{item.num}}</span>
+                    <button class="btn" @click="item.num>0 && item.num--">-</button>
+                </td>
+                <td>{{item.price * item.num}}</td>
+             </tr>
+         </tbody>
+      </table>
+    <h3 class="text-center">
+        <span class="label label-success">总价值为：{{totalMoney}}</span>
+        <span class="label label-info" @click="toZero">清零</span>
+    </h3>
+    </div>
+    <script>
+      var goods = [
+          {name: '西瓜', price: 6, num:0},
+          {name: '芒果', price: 12, num:0},
+          {name: '梨', price: 4, num: 0},
+          {name: '菠萝', price: 10, num: 0},
+          {name: '草莓', price: 12, num: 0}
+      ]
+      new Vue({
+          el: '#app',
+          data: {
+              goods
+          },
+          methods: {
+              toZero() {
+                  this.goods.forEach(item => item.num = 0)
+              }
+          },
+          computed: {
+              totalMoney() {
+                  return this.goods.reduce((pre, next) => pre+next.price*next.num, 0)
+              }
+          }
+      })
+
+    //   Array.prototype.reduce(fn, init)
+    //   fn = (pre, next) => pre + next
+    //   var arr = [1,2,3,4,5]
+    //   arr.reduce((pre, next) => pre+next)
+    //   pre 1, next 2  => 3
+    //   pre 3, next 3  => 6
+    //   pre 6, next 4  =>
+    </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+       <span>我是父级数据：{{msg}}</span>
+       <my-com :name="msg" @tellme = 'tellme' ></my-com>
+       <div>我在父级这儿等着你回来{{value}}</div>
+    </div>
+    <script>
+    // v-bind
+    const myCom = {
+         template: `
+            <div>
+              <span>我是子组件</span>
+              <div>收到父级数据：{{name}}</div>
+              <input v-model="val">
+            </div>
+         `,
+         watch: {
+           val(newVal) {
+               console.log(newVal)
+               this.$emit('tellme', newVal)
+           }
+         },
+         data() {
+             return {
+                 val: ''
+             }
+         },
+         methods: {
+            change() {
+                this.name.push(5)
+            }
+         },
+         props: {
+             newmsg: {
+                 type: Number,
+                 default: 123
+             },
+             name: {
+                 type: Array,
+                 default: 'name'
+             }
+         }
+    }
+    new Vue({
+        el: '#app',
+        data: {
+            msg: [1,2,3],
+            value: ''
+        },
+        methods: {
+            tellme(value) {
+               this.value = value
+            }
+        },
+        components: {
+            myCom
+        }
+    })
+    </script>
+</body>
+</html>

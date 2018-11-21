@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+</head>
+<body>
+     <div id="app">
+         <my-input></my-input>
+         <span>{{msg}}</span>
+     </div>
+     <script>
+        //  每个组件都有哪些部分构成
+        //   new Vue({...config})
+        //   let component = {...config}
+        // {
+        //     el,  //挂载实例
+        //     data, //组件内部数据
+        //     methods, // 组件内部定义的方法
+        //     props, // 
+        //     computed, //计算属性
+        //     watch,  //观察者
+        //     components, // 引入的vue组件
+        //     template,  // 当前vue组件的html结构
+        //     ...lifecycle // 生命周期
+        // }
+
+         // 全局组件、局部组件
+        //  Vue.component(tagName, {...config})
+        // Vue.component('my-input', {
+        //      data() {
+        //          return {
+        //              msg: 'xm'
+        //          }
+        //      },
+        //      template: `
+        //          <div>
+        //             <input v-model="msg">
+        //             <br>
+        //             <span>{{msg}}</span>
+        //          </div>
+        //      `
+        // })
+        
+         let myInput = {
+              template: `<div>
+                    <input v-model="msg">
+              </div>`,
+              data() {
+                   return {msg: 'hello'}
+              },
+              computed: {
+                  changeMsg: {
+                      get() {
+                        console.log('get')
+                        return this.msg.split('').join()
+                      },
+                      set(val) {
+                         console.log('set')
+                         this.msg = val
+                      }
+                      
+                  }
+              },
+              watch: {
+                  msg(newVal, oldVal) {
+                   
+                  },
+                  changeMsg() {
+                      
+                  }
+              },
+              methods: {
+                  handler() {
+                     console.log('________')
+                     this.changeMsg = '123'
+                  }
+              }
+         }
+         new Vue({
+             el: '#app',
+             components: {
+                myInput
+             },
+             data: {
+                 msg: 'watch'
+             }
+         })
+     </script>
+</body>
+</html>
