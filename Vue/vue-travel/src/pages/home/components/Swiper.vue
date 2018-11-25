@@ -19,8 +19,8 @@ export default {
         loop: true
       },
       swiperList: [
-        {id: '0001', imgUrl: 'http://img1.qunarzz.com/p/tts0/1803/2e/b0552e2a9c46b402.jpg_640x360_77ce0d76.jpg'},
-        {id: '0002', imgUrl: 'http://img1.qunarzz.com/p/tts9/1803/eb/ab21dece1058d502.jpg_640x360_67582315.jpg'}
+        {id: '0001', imgUrl: 'http://img1.qunarzz.com/piao/fusion/1809/12/856f100069809e02.jpg_750x200_e3485a2b.jpg'},
+        {id: '0002', imgUrl: 'http://img1.qunarzz.com/piao/fusion/1811/7c/8e5c4ab8ee8b7402.jpg_750x200_dd7a38dd.jpg'}
       ] 
     }
   }
@@ -34,7 +34,7 @@ export default {
         overflow: hidden
         width: 100%
         height: 0
-        padding-bottom: 56.25%
+        padding-bottom: 26.7%
         .swiper-img
             width: 100%
 </style>
