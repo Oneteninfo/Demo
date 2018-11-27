@@ -1,0 +1,13 @@
+npm install vue-cli -g //安装Vue脚手架
+vue init webpack sell1 //项目模板初始化
+npm run dev //开启本地服务
+npm install mockjs --save-dev
+npm install axios --save
+
+安装图标字体https://icomoon.io
+注意路径
+安装css-loader
+
+写跳转路由
+
+安装npm install stylus
